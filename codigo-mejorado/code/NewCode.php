@@ -31,21 +31,17 @@ class NewCode
     for ($i = 0; $i < $count_terminales; $i++) {
       $datos[$terminales[$i]->ter_id] = [
         "name" => $terminales[$i]->ter_nombre,
-        "distritos" => $this->traerDist($terminales[$i]->ter_id)
+        "distritos" => $this->traerDist($terminales[$i]->ter_ubigeo)
       ];
     }
     //debuguear($datos, true);
     return $datos;
   }
 
-  public function traerDist($id)
+  public function traerDist($ter_ubigeo)
   {
-    //debuguear($id);
-    $ubigeo = $this->getUbigeo($id);
 
-    if (!$ubigeo) return [];
-
-    $fields = $this->getUbigeoFields($ubigeo);
+    $fields = $this->getUbigeoFields($ter_ubigeo);
     if (empty($fields)) return [];
 
     return $this->buildDistritosData($fields[0]->ubi_depid, $fields[0]->ubi_provid);
@@ -57,10 +53,10 @@ class NewCode
     return $ubigeo;
   }
 
-  public function getUbigeoFields($ubigeo)
+  public function getUbigeoFields($ter_ubigeo)
   {
-
-    $fields = $this->db->select("twoFields", $ubigeo);
+    //debuguear($ter_ubigeo);
+    $fields = $this->db->select("twoFields", $ter_ubigeo);
     //debuguear($fields);
     return $fields;
   }

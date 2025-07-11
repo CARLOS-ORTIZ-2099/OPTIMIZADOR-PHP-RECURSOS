@@ -41,9 +41,10 @@ class Mysql implements DbInterface
     return $query;
   }
 
+
   public function ubigeo($id)
   {
-    // esta query se ejecuta despues del metodo terminales y hace la consulta a la misma tabla, pero donde solo retorna los registros del campo ter_ubigeo, siempre y cuando coincida con lo que se le pase como parametro al metodo ubigeo y lo que se le pasa será el ter_id de cada uno de los registros obtenidos de la consulta anterior es decir dle metodo 'terminales'
+
     $query = "SELECT ter_ubigeo FROM emp_terminal where ter_id = " . $id[0];
     return $query;
   }
@@ -67,6 +68,7 @@ class Mysql implements DbInterface
     //debuguear($query);
     return $query;
   }
+
 
   public function tarifaRecojo($ubi_id)
   {

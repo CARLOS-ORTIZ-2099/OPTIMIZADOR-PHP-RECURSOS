@@ -5,6 +5,7 @@
 CREATE TABLE `emp_terminal` (
   `ter_id` int NOT NULL,
   `ter_nombre` varchar(100) DEFAULT NULL,
+  -- el campo ter_ubigeo es una foreign key que apunta al campo ubi_id de la tabla emp_ciudad_ubigeo
   `ter_ubigeo` varchar(10) DEFAULT NULL,
   `ter_habilitado` tinyint NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
